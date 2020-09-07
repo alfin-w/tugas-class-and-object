@@ -1,0 +1,34 @@
+<?php
+class Makanan {
+	public 	$menu,
+			$namaToko,
+			$pemilik,
+			$harga;
+
+	public function __construct($menu = "menu", $namaToko = "namaToko", $pemilik = "pemilik", $harga = 0){
+		$this->menu = $menu;
+		$this->namaToko = $namaToko;
+		$this->pemilik = $pemilik;
+		$this->harga = $harga;
+	}
+	public function getLabel(){
+		return "$this->namaToko, $this->pemilik";
+	}
+
+}
+
+class CetakInfoMakanan{
+	public function Cetak($makanan){
+		$str = "{$makanan->menu} | {$makanan->getLabel()} (Rp.{$makanan->harga})";
+		return $str;
+	}
+}
+$makanan1 = new makanan("Nasi Rames ","Sari Rasa","Alfin Wirarajasa", 45000);
+$makanan2 = new makanan("Nasi Bakar ","Sari Rasai","Alfin Wirarajasa",50000);
+$infomakanan = new CetakInfomakanan();
+
+echo $makanan1->getLabel();
+echo "<br>";
+echo $infomakanan->Cetak($makanan1);
+echo "<br>";
+echo $infomakanan->Cetak($makanan2);
